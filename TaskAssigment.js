@@ -78,6 +78,7 @@ function assignTasks(members, tasks) {
         availableMembers.splice(randomMemberIndex, 1);
         availableTasks.splice(randomTaskIndex, 1);
     }
+    
 
     let pre = document.createElement("pre");
 

@@ -1,34 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Group task assigner</title>
     <style>
-        input{
+        input {
             display: block;
-            padding:10px;
-            margin:5px;
+            padding: 10px;
+            margin: 5px;
+        }
+        .content{
+            padding-left:350px;
+            
+        }
+        body{
+            margin: auto;
+        }
+        h1,p{
+        text-align: center;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         }
     </style>
 </head>
+
 <body>
     <h1>Group task assigner</h1>
-    
-    <div id="membersContainer">
+    <p>this is a simple tool to help groups assign tasks to various members the tool is random! there is no bias </p>
 
-        <h2 > members</h2>
-        <button id="addMember">add member</button>
+    <div class="content">
+
+
+        <div id="membersContainer">
+
+            <h2> members</h2>
+            <button id="addMember">add member</button>
+        </div>
+
+        <div id="tasksContainer">
+
+            <h2>tasks</h2>
+            <button id="addTask">add task</button>
+        </div>
+        <br>
+        <button id="asignBtn"> Assign tasks to members</button>
+
     </div>
-
-    <div id="tasksContainer">
-
-        <h2>tasks</h2>
-        <button id="addTask">add task</button>
-    </div>
-    <br>
-    <button id="asignBtn"> Assign tasks to members</button>
-
- <script src="TaskAssigment.js"></script>
+    <script src="TaskAssigment.js"></script>
 </body>
+
 </html>
