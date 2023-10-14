@@ -16,10 +16,12 @@ let members = Array.from(memberInputs).map(input => input.value);
 addTask.addEventListener('click', function () {
     // Create a new input element
     let input = document.createElement("input");
+    let edit = document.createElement('button');
 
     // Optionally set any desired input attributes
     input.setAttribute("type", "text");
     input.setAttribute("placeholder", "Enter new task");
+    edit.setAttribute("type", "submit");
 
     // Append the input field to the body (or any other container)
     document.querySelector("#tasksContainer").appendChild(input);
@@ -64,21 +66,26 @@ function assignTasks(members, tasks) {
     let availableMembers = [...members];
     let availableTasks = [...tasks];
 
-    while (availableTasks.length > 0) {
-        let randomMemberIndex = Math.floor(Math.random() * availableMembers.length);
-        let randomTaskIndex = Math.floor(Math.random() * availableTasks.length);
-
-        let selectedMember = availableMembers[randomMemberIndex];
-        let selectedTask = availableTasks[randomTaskIndex];
-
-        // Assign the task to the selected member
-        assignments[selectedMember] = selectedTask;
-
-        // Remove the selected member and task from the available members and tasks
-        availableMembers.splice(randomMemberIndex, 1);
-        availableTasks.splice(randomTaskIndex, 1);
+   if (availableTasks.length === 0) {
+        alert("There are no tasks to assign.");
+        return assignments;
     }
-    
+
+    if (availableMembers.length === 0) {
+        alert("There are no members to assign tasks to.");
+        return assignments;
+    }
+
+   
+    for (let i = 0; i < members.length; i++) {
+        let taskIndex = i % tasks.length; // Use modulo to cycle through tasks
+        assignments[members[i]] = tasks[taskIndex];
+    }
+    for(let i = 0;i<tasks.length; i++){
+        let memberIndex = i % members.length;
+
+       assignments[tasks[i]] = members[memberIndex];
+    }
 
     let pre = document.createElement("pre");
 
