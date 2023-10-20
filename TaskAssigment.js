@@ -21,6 +21,7 @@ addTask.addEventListener('click', function () {
     // Optionally set any desired input attributes
     input.setAttribute("type", "text");
     input.setAttribute("placeholder", "Enter new task");
+    input.classList.add('form-control');
     edit.setAttribute("type", "submit");
 
     // Append the input field to the body (or any other container)
@@ -39,6 +40,7 @@ addMember.addEventListener('click', function () {
     // Optionally set any desired input attributes
     input.setAttribute("type", "text");
     input.setAttribute("placeholder", "Enter new member");
+    input.classList.add('form-control');
 
     // Append the input field to the body (or any other container)
     document.querySelector("#membersContainer").appendChild(input);
@@ -91,10 +93,33 @@ function assignTasks(members, tasks) {
 
     // Set its innerHTML to the stringified assignments object
     pre.innerHTML = JSON.stringify(assignments, null, 2);
+    // pre.classList.add('modal-dialog');
 
     // Append the pre element to the body (or any other container)
     document.body.appendChild(pre);
+    document.querySelector(".modal-body").appendChild(pre);
+
+    
+
+    
 
     return assignments;
 }
+
+let copyBtn = document.getElementsByClassName('copy-btn');
+
+copyBtn.addEventListener('click', function () {
+    var pageContent = document.querySelector(".modal-body").outerHTML;
+
+    navigator.clipboard.writeText(pageContent).then(function() {
+        console.log('Page content copied to clipboard');
+    })
+    .catch(function(error) {
+        console.error('Error occurred while copying page content: ', error);
+    });
+})
+
+
+
+
 
